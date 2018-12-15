@@ -1,0 +1,23 @@
+
+  <h2>Settings</h2>
+
+  <div>
+    <label>Время начала торгов:
+      <input [(ngModel)]="set.start" placeholder="start">
+    </label>
+  </div>
+
+  <div>
+    <label>Время окончания торгов:
+      <input [(ngModel)]="set.end" placeholder="end">
+    </label>
+  </div>
+
+  <div>
+    <label> Интервал пересчета:
+      <input [(ngModel)]="set.interval" placeholder="interval">
+    </label>
+  </div>
+
+
+  <button (click)="save()">save</button>

@@ -1,0 +1,25 @@
+<h2>Brockers</h2>
+<ul class="brockers">
+  <li *ngFor="let brocker of brockers">
+    <a routerLink="/brockers/{{brocker.id}}">
+      <span class="badge">{{brocker.id}}</span> {{brocker.name}}
+      <span class="money">{{brocker.money}}</span>
+    </a>
+    <button class="delete" title="delete brocker"
+            (click)="delete(brocker)">x</button>
+  </li>
+</ul>
+
+<div>
+  <label>Broker name:
+    <input #heroName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+
+<!--<app-brocker-detailes [brocker]="selectedBrocker"></app-brocker-detailes>-->
+
+

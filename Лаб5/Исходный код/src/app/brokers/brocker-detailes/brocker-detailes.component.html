@@ -1,0 +1,19 @@
+
+<div *ngIf="brocker">
+  <h2>{{brocker.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{brocker.id}}</div>
+
+  <div>
+    <label>name:
+      <input [(ngModel)]="brocker.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>money:
+      <input [(ngModel)]="brocker.money" placeholder="money">
+    </label>
+  </div>
+
+  <button (click)="goBack()">go Back</button>
+  <button (click)="save()">save</button>
+</div>

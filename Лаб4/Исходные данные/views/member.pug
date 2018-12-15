@@ -1,0 +1,23 @@
+block member
+    script(src="/javascripts/member.js")
+    div.w3-container.w3-black.w3-opacity
+        p.w3-center.container#hello-tab Уголок участника
+    div.w3-container#member
+        div.w3-container.w3-white.w3-opacity.w3-margin.w3-padding.w3-left.listA
+            label(for="mem_id") Введите id
+            p
+            input#mem_id(value=0)
+            button.w3-button.container#btn Подтвердить
+
+    div.w3-container.w3-white.w3-opacity.w3-margin.w3-padding.curPic.w3-center
+        div.w3-container time:
+            div#timer
+        div#picContent
+            div#curPrice
+        div.w3-container.w3#currentPic
+        button.w3-button.w3-green#widgetBtn Предложить новую цену
+        button.w3-button.w3-green#requestBtn Подать заявку
+        div#widget(title="Увеличить цену!")
+            div#slider
+                div.ui-slider-handle#value
+            button.w3-button.w3-green#addBtn Добавить

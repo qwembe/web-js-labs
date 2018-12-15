@@ -1,0 +1,67 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/w3.css')
+    body
+        block head
+        block card
+
+block head
+    div(class="w3-container w3-teal")
+        p BookCard ##{id}
+        a(href="/") Back to list
+
+
+block card
+    -data
+    div(class="w3-container")
+        p
+        div(class="w3-card-4" style="width:50%")
+            header(class="w3-container w3-blue")
+                h2 #{data.name}
+
+            div(class="w3-container")
+                p Author: #{data.author}
+                p Name: #{data.name}
+                p Publish date : #{data.date}
+
+            footer(class="w3-contaner w3-blue")
+                h5   BookCard ##{id}
+
+
+
+
+block bookOwner
+    if(data.is_owned)
+        div(class="w3-container")
+            div(class="w3-card w3-yellow" style="width:45%")
+                header(class="w3-panel w3-topbar w3-bottombar w3-border-red w3-pale-yellow")
+                    h3 Info holder
+                div(class="w3-container")
+                    p Owner name: #{data.owner}
+                    p Expiers: #{data.expires}
+
+
+
+block redactOwner
+    div(class="w3-contaner")
+        div(class="w3-container")
+            p
+            button(class="w3-button w3-light-green" onclick="document.getElementById('id01').style.display='block'" id="newOwner") New Owner!
+            form(action=`/book/${id}` method="PUT")
+                button(class="w3-button w3-red" type="submit" ) Delete owner!
+                input(type="hidden" name="id" value=id)
+                input(type="hidden" name="type" value="del")
+        div(id="id01" class="w3-modal")
+            div(class="w3-modal-content ")
+
+                form(class="w3-modal-content w3-light-green w3-panel w3-card-4"  id="formOwner" action=`/book/${id}` method="POST")
+                    span(onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright") x
+                    p New owner!
+                    input(type="text" class="w3-input" name="owner" placeholder="Owner")
+                    input(type="date" class="w3-input" name="expires" placeholder="Expires")
+                    input(type="hidden" name="id" value=id )
+                    button(class="w3-button w3-green" type="submit") Set new owner!
+    //script
+        include index.js

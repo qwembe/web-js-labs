@@ -1,0 +1,35 @@
+
+extends layout
+
+
+
+block new_slot
+    form(class="w3-amber w3-panel w3-card-4" action="/" method="POST")
+        h3 New Book!
+        input(type="text" class="w3-input" name="name" placeholder="Book name")
+        input(type="text" class="w3-input" name="author" placeholder="Author")
+        input(type="text" class="w3-input" name="date" placeholder="Year")
+        button(class="w3-button w3-green" type="submit") Create!
+
+block buttons
+    div(class="w3-container")
+        button(class="w3-btn w3-white w3-border w3-border-blue w3-round" onclick="sort1()") Sort "return date"
+        button(class="w3-btn w3-white w3-border w3-border-blue w3-round" onclick="sort2()") Sort "in stock"
+        button(class="w3-btn w3-white w3-border w3-border-blue w3-round" onclick="back()") Back
+        script
+            include index.js
+
+
+
+
+block head
+    div(class="w3-container w3-teal")
+        p Welcome to the site!
+
+
+include table
+
+
+
+
+

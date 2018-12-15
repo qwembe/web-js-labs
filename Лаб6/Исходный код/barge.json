@@ -1,0 +1,82 @@
+{
+    "brokers": [
+        {
+            "id": 1,
+            "firstName": "Andrey",
+            "surName": "Vaigachev",
+            "login": "qwerty",
+            "password": "123",
+            "bank": 13400,
+            "stocks": [
+                {
+                    "id": 1,
+                    "count": 1
+                },
+                {
+                    "id": 2,
+                    "count": 0
+                },
+                {
+                    "id": 3,
+                    "count": 16720
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "firstName": "Sergei",
+            "surName": "Zasim",
+            "login": "qweqwe",
+            "password": "123",
+            "bank": 347000,
+            "stocks": [
+                {
+                    "id": 2,
+                    "count": 0
+                },
+                {
+                    "id": 1,
+                    "count": 0
+                },
+                {
+                    "id": 3,
+                    "count": 0
+                }
+            ]
+        }
+    ],
+    "admin": {
+        "firstName": "admin",
+        "surName": "admin",
+        "login": "admin",
+        "password": "admin"
+    },
+    "stocks": [
+        {
+            "id": 1,
+            "distribution": "even",
+            "maxChange": 10,
+            "count": 1000,
+            "price": 1000
+        },
+        {
+            "id": 2,
+            "distribution": "binomial",
+            "maxChange": 10,
+            "count": 10000,
+            "price": 200
+        },
+        {
+            "id": 3,
+            "distribution": "normal",
+            "maxChange": 1,
+            "count": 100000,
+            "price": 20
+        }
+    ],
+    "barge": {
+        "startTime": "2018-11-18T12:00",
+        "endTime": "2018-11-19T18:00:00",
+        "intervalTime": "01:00"
+    }
+}

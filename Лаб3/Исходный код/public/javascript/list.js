@@ -1,0 +1,1 @@
+"use strict";var m_data;$(document).ready(function(){$.ajax({url:"/datapic",success:function(a){m_data=JSON.parse(a).mdata;for(var i=0;i<m_data.length;){var t=m_data[++i-1];$("#olid").append("<li id="+(i-1)+"><img src=images/ico/"+t.file+".ico><a href=img/"+(i-1)+"> "+t.name+" </a></li>")}}})});

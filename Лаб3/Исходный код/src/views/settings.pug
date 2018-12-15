@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+        script(src="/javascript/jq/jquery.js")
+        script(src="/javascript/settings.js")
+    body
+        block header
+        block body
+
+
+block header
+    div.header
+        h1 #{title}
+
+
+
+block body
+    div.column
+        //form(action ="/index.html" method="POST")
+        div.column.left(id="set")
+    p
+        a(href="index.html") back
+

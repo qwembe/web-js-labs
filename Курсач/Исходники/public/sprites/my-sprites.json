@@ -1,0 +1,114 @@
+[
+  {
+    "name": "ground1",
+    "x": 0,
+    "y": 0,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "d-r",
+    "x": 0,
+    "y": 32,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "d-l",
+    "x": 32,
+    "y": 0,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "l-r",
+    "x": 32,
+    "y": 32,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "start",
+    "x": 0,
+    "y": 64,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "u-r",
+    "x": 32,
+    "y": 64,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "u-l",
+    "x": 64,
+    "y": 0,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "u-d",
+    "x": 64,
+    "y": 32,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "finish",
+    "x": 64,
+    "y": 64,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "cannon1",
+    "x": 0,
+    "y": 96,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "cannon2",
+    "x": 32,
+    "y": 96,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "cannon3",
+    "x": 64,
+    "y": 96,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "enemy",
+    "x": 96,
+    "y": 0,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "bullet",
+    "x": 96,
+    "y": 32,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "ground2",
+    "x": 96,
+    "y": 64,
+    "width": 32,
+    "height": 32
+  },
+  {
+    "name": "ground3",
+    "x": 96,
+    "y": 96,
+    "width": 32,
+    "height": 32
+  }
+]

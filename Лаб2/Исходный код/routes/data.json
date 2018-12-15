@@ -1,0 +1,59 @@
+{
+  "100": {
+    "author": "R.L Stevenson",
+    "name": "Tresure island",
+    "date": "1998",
+    "is_owned": false,
+    "owner": "Andrew",
+    "expires": "2018-10-11"
+  },
+  "101": {
+    "author": "L. Tolstoi",
+    "name": "Anna Karenina",
+    "date": "1982",
+    "is_owned": true,
+    "owner": "Andrew",
+    "expires": "2018-10-12"
+  },
+  "102": {
+    "author": "-",
+    "name": "Thousand and One Nigthts",
+    "date": "2013",
+    "is_owned": true,
+    "owner": "Andrew",
+    "expires": "2018-10-11"
+  },
+  "105": {
+    "name": "The Red and the Black",
+    "author": "Stendal",
+    "date": "1830",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "109": {
+    "name": "War and Peace",
+    "author": "L. Tolstoi",
+    "date": "1869",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "110": {
+    "name": "Dandelion Wine",
+    "author": "R. Bradbery",
+    "date": "1923",
+    "is_owned": true,
+    "owner": "Andrew",
+    "expires": "2018-10-10"
+  },
+  "115": {
+    "name": "Kak sdat' labu",
+    "author": "Silivestrov",
+    "date": "2018",
+    "is_owned": true,
+    "owner": "Nikita",
+    "expires": "2018-10-01"
+  },
+  "last_key": 115
+}

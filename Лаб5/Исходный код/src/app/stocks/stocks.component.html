@@ -1,0 +1,20 @@
+<h2>Stock</h2>
+<ul class="stocks">
+  <li *ngFor="let stock of stockers">
+    <a routerLink="/stocks/{{stock.id}}">
+      <span class="badge">{{stock.id}}</span> {{stock.name}}
+    </a>
+    <button class="delete" title="delete stock"
+            (click)="delete(stock)">x</button>
+  </li>
+</ul>
+
+<div>
+  <label>Stock name:
+    <input #stockName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(stockName.value); stockName.value=''">
+    add
+  </button>
+</div>

@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        //title= title
+        link(rel='stylesheet', href='/stylesheets/w3.css')
+        link(rel='stylesheet', href='/stylesheets/custom.css')
+        link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
+        script(src="/javascripts/jquery.js")
+        script(src="/javascripts/jquery-ui.js")
+        script(src="/javascripts/index.js")
+        script(src="http://localhost:3030/socket.io/socket.io.js")
+    body(style='background-image: url(/stylesheets/plum-wine-lozenge.png)' )
+        - data_picture
+        - data_bidders
+        - settings
+        block Head
+        iframe.w3-opacity.ui-widget-content#onlineInfo(src="./online-info.html" scrolling=true height=500 frameborder=yes)

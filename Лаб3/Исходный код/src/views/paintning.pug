@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+        script(src="/javascript/jq/jquery.js")
+        script(src="/javascript/paint.js")
+    body
+        block header
+        block body
+
+
+block header
+    div.header
+        h1 #{title}
+
+
+
+block body
+    -data
+    -id
+    div.column
+        div.column.left
+            p Name: #{data.name}
+                form(action=`/image/${id}`, method="POST")
+                    input(type="text" name="name")
+            p Author: #{data.author}
+                form(action=`/image/${id}`, method="POST")
+                    input(type="text" name="author")
+            p Min step: #{data.minstep}
+                form(action=`/image/${id}`, method="POST")
+                    input(type="text" name="minstep")
+            p Max step: #{data.maxstep}
+                form(action=`/image/${id}`, method="POST")
+                    input(type="text" name="maxstep")
+            p Selling next auct: #{data.selling}
+            form(action=`/image/${id}`, method="POST")
+                input#checkbox1(type="submit"  name="selling" value="Change" onclick=`alert(hi)`)
+            //
+            //
+            //    input(type="submit")
+            p
+                a(href ="/list_of_paintings.html") back
+        div.column.center
+            img(src=`/images/${data.file}.jpg` width="350"
+            height="250" )
+            p Description: #{data.descript}
+                form(action=`/image/${id}`, method="POST")
+                    input(type="text" name="descript")

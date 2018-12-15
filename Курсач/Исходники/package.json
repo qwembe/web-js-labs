@@ -1,0 +1,15 @@
+{
+  "name": "cursovik",
+  "version": "0.0.1",
+  "description": "my little game test",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ./public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arthur",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^10.1.1"
+  }
+}

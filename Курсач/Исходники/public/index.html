@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Первая страница</title>
+    <meta charset="UTF-8">
+    <style>
+        .right {
+            float: right;
+        }
+
+        .canvas {
+            float: left
+        }
+
+        .tower {
+            display: inline-block;
+            padding: 5px;
+            border: 1px solid;
+        }
+    </style>
+    <script src="js/index.js"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+
+            <label>Enter your name:</label>
+            <input id="name" value="">
+            <button id="button" type="submit" onclick="addNameToLocalStorage()">new player!</button>
+            <br>
+            <div style="float: right">
+                <button id="startgame" disabled="disabled">start game!</button>
+                <button id="lvl1" disabled="disabled">level 1</button>
+                <button id="lvl2" disabled="disabled">level 2</button>
+            </div>
+        </td>
+
+        <td>
+            <div>
+                Status:
+                <div id="info"></div>
+                <br>
+                Cash:
+                <div id="money">money</div>
+                <br>
+                Wave:
+                <div id="wave"></div>
+                <br>
+            </div>
+        </td>
+
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <canvas id="canvasid" width="500" height="500" style="border: 1px solid black"> >
+                browser dosnt support canvas
+            </canvas>
+        </td>
+        <td>
+            <div class='tower' id="tower1" style='background-color: darkturquoise;'>
+                Tower 1
+                <br>
+                Range: med
+                <br>
+                Damage: med
+                <br>
+                Rate: med
+                <br>Cost: 10
+
+            </div>
+            <p>
+            <div class='tower' id="tower2" style='background-color: yellow;'>
+                Tower 2
+                <br>
+                Range: long
+                <br>
+                Damage: med
+                <br>
+                Rate: high
+                <br>Cost: 25
+
+            </div>
+            <p>
+            <div class='tower' id="tower3" style='background-color:red;'>
+                Tower 3
+                <br>
+                Range: short
+                <br>
+                Damage: high
+                <br>
+                Rate: med
+                <br>Cost: 25
+
+            </div>
+        </td>
+        <td>
+            <div>
+                Leaderbord:
+                <li id="leaderboard"></li>
+            </div>
+        </td>
+
+
+    </tr>
+</table>
+
+<script type="module" src="./js/index.js"></script>
+<script>
+    var nick = "";
+    var score = 0;
+    var _endGame = false;
+
+    function addNameToLocalStorage() {
+        var input = document.getElementById("name");
+        if (input.value === "") return
+        else nick = input.value;
+        // console.log(nick);
+        var button = document.getElementById("button");
+        button.disabled = "disabled";
+        document.getElementById("startgame").disabled = "";
+        document.getElementById("lvl1").disabled = "";
+        document.getElementById("lvl2").disabled = "";
+        if (_endGame) endGame(score);
+
+    }
+
+    function endGame(s) {
+        // console.log("endGame")
+        if (nick === "") {
+            score = s;
+            return
+        }
+        var arr = JSON.parse(localStorage.leaderBoard).leaderBoard
+
+        // console.log(arr);
+        // var d = arr.filter((e) => {
+        //     if (e.nick === nick) {
+        //         if (e.score < s) e.score = s
+        //         return true;
+        //     }
+        // })
+        // console.log(d)
+        // if (d.length == 0) {
+            arr.push({
+                nick: nick,
+                score: s,
+            });
+
+        localStorage.leaderBoard = JSON.stringify({leaderBoard: arr})
+        updateLeaderBoard();
+    }
+
+    function updateLeaderBoard() {
+
+        var arr = JSON.parse(localStorage.leaderBoard).leaderBoard
+        // console.log(arr)
+        arr.sort((leaderA, leaderB) => {
+            return leaderB.score - leaderA.score;
+        })
+        var nicks = [];
+        arr.forEach((elem,i,arr) => {
+            if(nicks.indexOf(elem.nick) == -1){
+                nicks.push(elem.nick)
+            }
+            else {
+                arr.splice(i)
+            }
+        })
+        localStorage.leaderBoard = JSON.stringify({leaderBoard: arr})
+        var board = document.getElementById("leaderboard");
+        board.innerHTML = "";
+        for (var leader of arr) {
+            board.innerHTML += `<ul>${leader.nick} : ${leader.score}</ul>`;
+        }
+
+
+
+
+
+        // // console.log(JSON.parse(localStorage.leaderBoard))
+        // var arr = JSON.parse(localStorage.leaderBoard).leaderBoard
+        // // console.log(arr)
+        // arr.sort((leaderA, leaderB) => {
+        //     return leaderB.score - leaderA.score;
+        // })
+        // // console.log(arr);
+        // var board = document.getElementById("leaderboard");
+        // // console.log(board)
+        // board.innerHTML = "";
+        // for (var leader of arr) {
+        //     board.innerHTML += `<ul>${leader.nick} : ${leader.score}</ul>`;
+        // }
+    }
+
+    if (localStorage.leaderBoard == "") localStorage.leaderBoard = JSON.stringify({leaderBoard: new Array()})
+     // localStorage.leaderBoard = JSON.stringify({leaderBoard: new Array()})
+    updateLeaderBoard()
+
+
+</script>
+</body>
+</html>

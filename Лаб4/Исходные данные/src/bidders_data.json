@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "id": 103,
+      "name": "Andrey",
+      "money": "1003 "
+    },
+    0,
+    {
+      "id": 125,
+      "name": "Alex",
+      "money": "1500"
+    },
+    {
+      "id": 126,
+      "name": "Sasha",
+      "money": "1500"
+    },
+    {
+      "id": 127,
+      "name": "Darwin",
+      "money": "500"
+    }
+  ],
+  "ids": 127
+}

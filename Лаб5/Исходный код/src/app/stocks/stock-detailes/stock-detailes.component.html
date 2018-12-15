@@ -1,0 +1,34 @@
+<div *ngIf="stock">
+  <h2>{{stock.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{stock.id}}</div>
+
+  <div>
+    <label>name:
+      <input [(ngModel)]="stock.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>distribution law:
+      <input [(ngModel)]="stock.disLaw" placeholder="disLaw" pattern="U|N|B">
+    </label>
+  </div>
+  <div>
+    <label>max step
+      <input [(ngModel)]="stock.maxStep" placeholder="maxStep">
+    </label>
+  </div>
+  <div>
+    <label>amount
+      <input [(ngModel)]="stock.amount" placeholder="amount">
+    </label>
+  </div>
+  <div>
+    <label>start price
+      <input [(ngModel)]="stock.startPrice" placeholder="startPrice">
+    </label>
+  </div>
+
+
+  <button (click)="goBack()">go Back</button>
+  <button (click)="save()">save</button>
+</div>

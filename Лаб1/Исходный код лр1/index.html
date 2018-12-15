@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<html>
+<head>
+    <title>Welcome to nginx!</title>
+    <style>
+        body {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<h1>Игра тетрис!</h1>
+
+<form action="index.html" method="get">
+    <label>
+        Введите имя:<br>
+        <input type="text" id="TextCont" placeholder="Имя пользователя" onchange='storeSth();haveChanges()'><br>
+    </label>
+    <!--<button onclick="alert('hi')"> </button>-->
+    <input type="submit" value="Ввод">
+</form>
+
+<h3>Scorebord</h3>
+<div id="Scorebord"></div>
+
+<script>
+
+    function store(source) {
+        localStorage["tetris.username"] = source.value;
+    }
+
+    function read(source) {
+        source.value = localStorage["tetris.username"];
+    }
+
+    function haveChanges() {
+        alert('Change page');
+        window.location = "main.html";
+    }
+
+    function storeSth() {
+
+        store(document.getElementById('TextCont'));
+    }
+
+
+    function printScorebord() {
+
+        // var storedNames = new Map(JSON.parse(localStorage["tetris.bord"]));
+        // localStorage["tetris.scoreboard"].forEach();
+
+        var map;
+
+        if (localStorage.myMap == undefined) {
+            map = new Map();
+        } else {
+            map = new Map(JSON.parse(localStorage.myMap));
+        }
+
+
+        var res = "";
+
+        for (var [key, value] of map) {
+            var res = res + `${key} : ${value}  <p> `;
+        }
+
+
+        document.getElementById("Scorebord").innerHTML = res;
+
+
+    }
+
+    printScorebord()
+
+    //
+    // function submitButton() {
+    //     alert('Submited')
+    //
+    // }
+
+
+</script>
+
+
+<!--<p><em>Thank you for using nginx.</em></p>-->
+</body>
+</html>

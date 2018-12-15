@@ -1,0 +1,32 @@
+
+
+block table
+    -data
+    div(id="table_id")
+        table(class="w3-table w3-striped")
+            tr
+                th Book name
+                th Author
+                th Release date
+                th Id book
+            -for(id_book in data)
+                if(id_book != "last_key")
+                    tr(class="w3-hover-green")
+                        td #{data[id_book].name}
+                        td #{data[id_book].author}
+                        td #{data[id_book].date}
+                        -let url = `/book/${id_book}`
+                        td
+                            a(href=url) #{id_book}
+                        td
+                            button(class="w3-button w3-red w3-round" onclick=`document.getElementById('del${id_book}').style.display='block'` id="newOwner") x
+                        div(id=`del${id_book}` class="w3-modal")
+                            div(class="w3-modal-content ")
+                                div(class="w3-panel w3-pale-red w3-leftbar w3-border w3-border-red")
+
+                                    span(onclick=`document.getElementById('del${id_book}').style.display='none'` class="w3-button w3-display-topright") x
+                                    p Are you sure?
+                                    p Delete #{data[id_book].name} ? id = #{id_book}
+                                    form(class="w3-container" id="formDeleter" action=`/${id_book}` method="PUT")
+                                        button(class="w3-button w3-red" type="submit") Delete!
+                                        input(type="hidden"  name="_method" value="DELETE")

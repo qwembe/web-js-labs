@@ -1,0 +1,51 @@
+{
+  "100": {
+    "author": "R.L Stevenson",
+    "name": "Tresure island",
+    "date": "1998",
+    "is_owned": true,
+    "owner": "owner B",
+    "expires": "date B"
+  },
+  "101": {
+    "author": "L. Tolstoi",
+    "name": "Anna Karenina",
+    "date": "1982",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "102": {
+    "author": "-",
+    "name": "Thousand and One Nigthts",
+    "date": "2013",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "103": {
+    "name": "Dandelion Wine",
+    "author": "R. Bradbery",
+    "date": "1923",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "104": {
+    "name": "Das Kapital",
+    "author": "K. Marks",
+    "date": "1867",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "105": {
+    "name": "Das Kapital",
+    "author": "K. Marks",
+    "date": "1867",
+    "is_owned": false,
+    "owner": "",
+    "expires": ""
+  },
+  "last_key": 105
+}

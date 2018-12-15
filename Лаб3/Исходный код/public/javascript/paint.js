@@ -1,0 +1,1 @@
+"use strict";$("#checkbox1").click(function(c){alert(c),$(this).attr("checked")?alert("is checked"):alert("is not checked")});

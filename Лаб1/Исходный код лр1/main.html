@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<html>
+<head>
+    <title>Welcome to nginx!</title>
+    <style>
+        body {
+            width: 50%;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+
+        .left {
+            /*width: 20%;*/
+            float: left;
+            /*border: 1px solid black;*/
+        }
+
+        .right {
+            /*text-align: right;*/
+            float: right;
+            /*border: 1px solid black;*/
+        }
+    </style>
+</head>
+<body>
+<h1>Игра Тетрис</h1>
+<div class="left">
+    Игрок:
+    <div id="Player"></div>
+    <p>
+        Текущий уровень:
+    <div id="Level"></div> <!-- TODO  менять уровень-->
+    <p>
+        Следующая фигура
+    <p>
+        <canvas id="nextFig" width="150" height="150"></canvas>
+    <p>
+        Клавиши для управления:
+    <p>
+        Влево:
+    <p>
+        Вправо:
+    <p>
+        Бросить фигуру:
+    <p>
+        Поворот фигуры:
+    <p>
+</div>
+<div class="right">
+    Поле:
+    <p>
+        <canvas id="bucket" width="400" height="600"></canvas>
+</div>
+
+
+<script>
+
+
+    var Figures = {
+
+        fig1: ['1'],
+        fig2: ['2', '3'],
+        fig3: ['4', '5', '6', '7'],
+        fig4: ['8', '9', '10', '11'],
+        fig5: ['12', '13', '14', '15'],
+        fig6: ['16', '17', '18', '19'],
+        fig7: ['20', '21'],
+
+        "1": [
+            [1, 1, 0, 0],
+            [1, 1, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "2": [
+            [1, 0, 0, 0],
+            [1, 0, 0, 0],
+            [1, 0, 0, 0],
+            [1, 0, 0, 0]
+        ],
+        "3": [
+            [1, 1, 1, 1],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "4": [
+            [1, 0, 0, 0],
+            [1, 0, 0, 0],
+            [1, 1, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "5": [
+            [0, 0, 1, 0],
+            [1, 1, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "6": [
+            [1, 1, 0, 0],
+            [0, 1, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "7": [
+            [1, 1, 1, 0],
+            [1, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "8": [
+            [1, 0, 0, 0],
+            [1, 1, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "9": [
+            [0, 1, 1, 0],
+            [1, 1, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "10": [
+            [1, 0, 0, 0],
+            [1, 1, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "11": [
+            [0, 1, 1, 0],
+            [1, 1, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "12": [
+            [1, 0, 0, 0],
+            [1, 1, 0, 0],
+            [1, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "13": [
+            [0, 1, 0, 0],
+            [1, 1, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "14": [
+            [0, 1, 0, 0],
+            [1, 1, 0, 0],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "15": [
+            [1, 1, 1, 0],
+            [0, 1, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "16": [
+            [1, 1, 0, 0],
+            [1, 0, 0, 0],
+            [1, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "17": [
+            [1, 0, 0, 0],
+            [1, 1, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "18": [
+            [0, 1, 0, 0],
+            [0, 1, 0, 0],
+            [1, 1, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "19": [
+            [1, 1, 1, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "20": [
+            [1, 1, 0, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+        "21": [
+            [0, 1, 0, 0],
+            [1, 1, 0, 0],
+            [1, 0, 0, 0],
+            [0, 0, 0, 0]
+        ],
+
+
+        getFig(fig, pos) {
+            return Figures[(Figures[fig])[pos]];
+        },
+
+        nextPos(fig, pos) {
+            pos--
+            if (pos >= 0) {
+                return pos;
+            } else {
+                return Figures[fig].length - 1;
+            }
+        },
+
+        lengthX(fig, pos) {
+            let l = 0;
+            let arr = Figures.getFig(fig, pos);
+            for (let x = 0; x < 4; x++) {
+                inner: for (let y = 0; y < 4; y++) {
+                    if (arr[x][y] == 1) {
+                        l++;
+                        break inner;
+                    }
+                }
+            }
+            return l;
+        },
+
+        lengthY(fig, pos) {
+            let l = 0;
+            let arr = Figures.getFig(fig, pos);
+            for (let x = 0; x < 4; x++) {
+                inner: for (let y = 0; y < 4; y++) {
+                    if (arr[y][x] == 1) {
+                        l++;
+                        break inner;
+                    }
+                }
+
+            }
+
+            return l;
+        },
+
+
+    }
+
+    class Figure {
+
+        constructor() {
+
+            // this.fig = ["fig1", "fig2", "fig3", "fig4", "fig5", "fig6", "fig7"];
+            this.fig = ["fig1", "fig2", "fig3", "fig4", "fig5", "fig6", "fig7"];
+
+            this.cur_fig = this.fig[0 + Math.floor(Math.random() * (this.fig.length - 1 + 1 - 0))];
+            this.cur_pos = 0;
+            this.arr = Figures.getFig(this.cur_fig, this.cur_pos);
+            this.colour = ["green", "maroon", "orange", "darkmagenta", "mediumorchid","lime","olive","lightseagreen"];
+            this.cur_colour = this.colour[0 + Math.floor(Math.random() * (this.colour.length - 1 + 1 - 0))];
+        }
+
+        getFig() {
+            return this.arr;
+        }
+
+        getColour() {
+            // let tmp =
+            //this.cur_colour = colour[0 + Math.floor(Math.random() * (this.colour.length + 1 - 0))];
+            return this.cur_colour;
+        }
+
+        rotateFig() {
+            this.cur_pos = Figures.nextPos(this.cur_fig, this.cur_pos)
+            this.arr = Figures.getFig(this.cur_fig, this.cur_pos);
+        }
+
+        lengthX() {
+            return Figures.lengthX(this.cur_fig, this.cur_pos)
+        }
+
+        lengthY() {
+            return Figures.lengthY(this.cur_fig, this.cur_pos)
+        }
+
+        setPos(pos) {
+            this.cur_pos = pos
+            this.arr = Figures.getFig(this.cur_fig, pos);
+        }
+
+
+    }
+
+    let Player = {
+        value: "defaultUser",
+        score: 0
+    }
+
+    function readPlayer(player) {
+        player.value = localStorage["tetris.username"];
+        document.getElementById("Player").innerHTML = player.value;
+    }
+
+
+    readPlayer(Player);
+
+    // alert(`${Player.value} ,${Player.score}`);
+
+
+    class Field {
+
+        constructor(canvasId, maxX = 10, maxY = 15) {
+
+            this.fig = new Figure();
+            // this.nextFigField;
+
+            this.maxX = maxX;
+            this.maxY = maxY;
+
+            this.X = 1;
+            this.Y = 6;
+
+            let field = new Array();
+
+            for (let i = 0; i < maxX; i++) {
+                field[i] = new Array();
+                for (let j = maxY; j > 0; j--) {
+                    field[i][j] = "";
+                }
+            }
+
+            this.field = field;
+
+            this.level = 1;
+            this.velocity = 1000;
+
+            const canvas = document.getElementById(canvasId);
+            if (canvas.getContext) {
+
+
+                let canv = canvas.getContext('2d');
+                this.canv = canv;
+
+                let m_wight = canv.canvas.clientWidth;
+                let m_hight = canv.canvas.clientHeight;
+
+
+                this.m_wight = m_wight;
+                this.m_hight = m_hight;
+
+                this.cellX = Math.floor(m_wight / maxX);
+                this.cellY = Math.floor(m_hight / maxY);
+
+                this.drawBorder();
+
+            } else {
+                alert("Wrong id!");
+            }
+
+
+        }
+
+        updateTime() {
+            this.velocity = 800 - 100*this.level;
+        }
+
+        getTime() {
+            this.updateTime();
+            return this.velocity;
+        }
+
+        rotateFig() {
+            this.clearFig();
+            this.fig.rotateFig();
+            this.placeFig();
+        }
+
+        moveLeft() {
+            let arr = this.fig.getFig();
+            let Y = this.fig.lengthY()
+            let X = this.fig.lengthX()
+            if (this.X - 1 < 0) return
+            for (let i = 0; i < Y; i++) {
+                if ((this.field[this.X - 1][this.Y + i] !== "") && (arr[0][i] == 1)) return
+            }
+            this.clearFig();
+            this.X--
+            this.placeFig();
+        }
+
+        moveRight() {
+            let arr = this.fig.getFig();
+            let Y = this.fig.lengthY()
+            let X = this.fig.lengthX()
+            if (this.X + X > this.maxX) return
+            for (let i = 0; i < Y; i++) {
+                // alert(`${this.X + X} ${this.Y + i} , ${X - 1} ${i } ${arr[X - 1][i]}`)
+                if ((this.field[this.X + X][this.Y + i] !== "") && (arr[X - 1][i] == 1)) {
+                    return
+                }//ia hz tut bag slichkom slogna
+                // вродебы исправил
+            }
+            this.clearFig();
+            this.X++
+            this.placeFig();
+        }
+
+        addAction() {
+            document.addEventListener('keydown', (event) => {
+                const keyName = event.key;
+                // alert('Событие keydown: ' + keyName);
+                switch (keyName) {
+                    case "ArrowUp":
+                        if (this.tryRotate()) this.rotateFig();
+                        break;
+                    case  'ArrowDown':
+                        this.dropFig();
+                        break;
+                    case 'ArrowLeft':
+                        this.moveLeft();
+                        break;
+                    case 'ArrowRight':
+                        this.moveRight();
+                        break;
+                }
+            });
+        }
+
+        newFig() {
+            this.putFig();
+            this.fig = this.nextFigField.getNextFig();
+            this.X = 4;
+            this.Y = -1;
+            this.placeFig();
+            this.nextStep();
+        }
+
+        figFixed() {
+            this.processField();
+            this.newFig();
+        }
+
+        dropFig() {
+            // clearTimeout(this.interval)
+            this.clearFig();
+            while (this.tryDown()) {
+                this.Y++;
+            }
+            this.placeFig();
+            this.newFig();
+            if(!this.tryDown()) {
+                clearTimeout(this.interval);
+                clearTimeout(this.drawID);
+                endGame();
+            }
+            // this.interval = setInterval(() => {
+            //     this.nextStep();
+            // }, 400);
+            // this.figFixed();
+        }
+
+        drawBorder() {
+            this.canv.strokeRect(0, 0, this.m_wight, this.m_hight);
+        }
+
+        putNewFig() {
+            this.X = 1;
+            this.Y = 1;
+
+            let arr = this.fig.getFig()
+            let X = this.fig.lengthX()
+            let Y = this.fig.lengthY()
+
+            this.canv.fillStyle = this.fig.getColour();
+
+            for (let x = 0; x < X; x++) {
+                // alert(x)
+                for (let y = 0; y < Y; y++) {
+                    if (arr[x][y] == 1) {
+                        //TODO: make colour from fig
+                        this.canv.fillRect(
+                            (this.X + x) * this.cellX,
+                            (this.Y + y) * this.cellY,
+                            this.cellX,
+                            this.cellY)
+                    }
+                }
+                //ctx.clearRect(45, 45, 60, 60);}
+            }
+        }
+
+        putFig() {
+            let tmp = this.fig.getFig();
+            let X = this.fig.lengthX()
+            let Y = this.fig.lengthY()
+            // alert(`${X},${Y}`)
+            for (let x = 0; x < X; x++) {
+                for (let y = 0; y < Y; y++) {
+                    if (tmp[x][y] == 1) {
+                        this.field[this.X + x][this.Y + y] = this.fig.getColour();
+                    }
+                }
+            }
+
+        }
+
+        start() {
+            this.addAction();
+            document.getElementById("Level").innerHTML = this.level;
+            if (this.nextFigField == undefined) {
+                this.nextFigField = new Field("nextFig", 5, 5);
+                this.nextFigField.putNewFig();
+                this.fig = this.nextFigField.getNextFig();
+            }
+            this.interval = setInterval(() => {
+                this.nextStep();
+            }, this.getTime());
+
+            this.drawID = setInterval(() => {
+                this.draw();
+            }, 10);
+
+            // window.requestAnimationFrame(draw())
+
+
+        }
+
+        draw() {
+            this.updateFiled();
+            this.placeFig();
+            this.drawBorder();
+            // alert(1)
+            //this.drawCell(2,2);
+            // window.requestAnimationFrame(draw());
+        }
+
+        clearFig() {
+            let arr = this.fig.getFig()
+            let X = this.fig.lengthX()
+            let Y = this.fig.lengthY()
+
+
+            for (let x = 0; x < X; x++) {
+                // alert(x)
+                for (let y = 0; y < Y; y++) {
+                    if (arr[x][y] == 1) {
+
+                        this.canv.clearRect(
+                            (this.X + x) * this.cellX,
+                            (this.Y + y) * this.cellY,
+                            this.cellX,
+                            this.cellY)
+                    }
+                }
+                //ctx.(45, 45, 60, 60);}
+            }
+        }
+
+        placeFig() {
+            let arr = this.fig.getFig()
+            let X = this.fig.lengthX()
+            let Y = this.fig.lengthY()
+            this.canv.fillStyle = this.fig.getColour();
+            for (let x = 0; x < X; x++) {
+                for (let y = 0; y < Y; y++) {
+                    if (arr[x][y] == 1) {
+                        this.drawCell(this.X + x, this.Y + y)
+
+                    }
+                }
+            }
+        }
+
+        nextStep() {
+            if(!this.tryDown()) {
+                clearTimeout(this.interval);
+                clearTimeout(this.drawID);
+                endGame();
+            }
+            this.down();
+            this.processField();
+
+        }
+
+        tryRotate() {
+
+            let last_pos = this.fig.cur_pos;
+            this.fig.rotateFig();
+
+            let tmp = this.fig.getFig();
+            let X = this.fig.lengthX()
+            let Y = this.fig.lengthY()
+
+            if (this.Y + Y > this.maxY) {
+                this.fig.setPos(last_pos);
+                return false;
+            }
+            if (this.X + X > this.maxX) {
+                this.fig.setPos(last_pos);
+                return false;
+            }
+
+
+            // alert(1);
+            for (let x = 0; x < X; x++) {
+                for (let y = 0; y < Y; y++) {
+                    // alert(`${x},${y}  ${this.X + x},${this.Y + y  }  = ${(tmp[x][y] == 1) && (this.field[this.X + x][this.Y + y  ] === "")}`)
+                    if (!(this.field[this.X + x][this.Y + y] === "")) {
+                        if ((tmp[x][y] == 1)) {
+                            this.fig.setPos(last_pos);
+                            return false;
+                        }
+                    }
+                }
+            }
+            this.fig.setPos(last_pos);
+            // alert("rotaded")
+            return true
+        }
+
+        processField() {
+            // alert(1)
+            var cleared = 0;
+            for (var y = this.maxY - 1; y > 0; y--) {
+                var rowFilled = true;
+
+                breakinner: for (var x = 0; x < this.maxX; x++) {
+                    // alert(`${x},${y}`)
+                    // alert(this.field[x][y])
+                    if (this.field[x][y] == undefined) {
+                        this.field[x][y] = "";
+                    }
+                    if (this.field[x][y] == "") {
+                        rowFilled = false;
+                        break breakinner;
+                    }
+                }
+                if (rowFilled) {
+                    cleared++;
+                    for (var yy = y; yy > 0; yy--) {
+                        for (var x = 0; x < this.maxX; x++) {
+                            this.field[x][yy] = this.field[x][yy - 1];
+                        }
+                    }
+                    y++;
+                    this.addScore();
+                }
+            }
+            for (var x = 0; x < this.maxX; x++) this.field[x][0] = ""
+        }
+
+        updateFiled() {
+            //
+            for (let x = 0; x < this.maxX; x++) {
+                for (let y = 0; y < this.maxY; y++) {
+                    this.canv.fillStyle = "white"
+                    if (!this.field[x][y] == "") {
+                        this.canv.fillStyle = this.field[x][y];
+                    }
+
+                    this.drawCell(x, y)
+                }
+            }
+            // this.drawBorder();
+
+        }
+
+        drawCell(x, y) {
+            this.canv.fillRect(
+                (x) * this.cellX,
+                (y) * this.cellY,
+                this.cellX,
+                this.cellY)
+        }
+
+        addScore() {
+            Player.score += 100 ;//* this.level;
+            alert(Player.score)
+            if (Player.score > 500 * this.level) {
+                alert(`${Player.score} : ${ 500 * this.level}`)
+                this.level++;
+                clearTimeout(this.interval)
+                this.interval = setInterval(() => {
+                            this.nextStep();
+                        }, this.getTime());
+            }
+            document.getElementById("Level").innerHTML = this.level;
+        }
+
+        tryDown() {
+            let tmp = this.fig.getFig();
+            let X = this.fig.lengthX()
+            let Y = this.fig.lengthY()
+
+            if (this.Y + Y + 1 > this.maxY) return false
+            // if(this.X + X > this.maxX) return false
+
+            // alert(1);
+            for (let x = 0; x < X; x++) {
+                for (let y = 0; y < Y; y++) {
+                    // alert(`${x},${y}  ${this.X + x},${this.Y + y  }  = ${(tmp[x][y] == 1) && (this.field[this.X + x][this.Y + y  ] === "")}`)
+                    if (!(this.field[this.X + x][this.Y + y + 1] === "")) {
+                        if ((tmp[x][y] == 1)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true
+        }
+
+        down() {
+            if (this.tryDown()) {
+                this.clearFig();
+                this.Y++;
+                this.placeFig();
+            } else {
+                //this.putFig();
+                this.newFig();
+                // this.figFixed();
+            }
+        }
+
+        setNextFigField(Field) {
+            this.nextFigField = Field;
+        }
+
+        getNextFig() {
+            let tmp = this.fig;
+            this.clearFig();
+            this.fig = new Figure();
+            this.placeFig();
+            return tmp;
+        }
+
+        // start2() {
+        //     this.addAction();
+        //
+        //     this.interval = setInterval(() => {
+        //         this.nextStep();
+        //     }, 400);
+        //     const draw = setInterval(() => {
+        //         this.draw();
+        //     }, 20)
+        //
+        // }
+
+    }
+
+
+    function game() {
+        let nextFig = new Field("nextFig", 5, 5);
+        let field = new Field("bucket");
+        nextFig.putNewFig();
+        field.setNextFigField(nextFig);
+        field.start();
+
+    }
+
+
+    game();
+
+    function endGame() {
+        var map;
+        if (localStorage.myMap == undefined) {
+            map = new Map();
+        } else {
+            map = new Map(JSON.parse(localStorage.myMap));
+        }
+        map.set(Player.value, Player.score);
+        localStorage.myMap = JSON.stringify(Array.from(map.entries()));
+        alert(`Игра окончена ваш результат: ${Player.score}`);
+        window.location = "index.html";
+    }
+
+</script>
+
+
+<!--<p><em>Thank you for using nginx.</em></p>-->
+</body>
+</html>
+
+
+
+

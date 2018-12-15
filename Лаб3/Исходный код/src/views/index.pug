@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+    body
+        block header
+        block body
+
+
+block header
+    div.header
+        h1 #{title}
+
+
+
+block body
+    div.column
+        div.column.left
+            p
+                a(href="./list_of_paintings.html") to the list
+            p
+                a(href="./bidders.html") to the bidders
+            p
+                a(href="./settings.html") to the settings
+        //div.column.center
+

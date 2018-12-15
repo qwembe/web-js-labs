@@ -1,0 +1,66 @@
+{
+  "mdata": [
+    {
+      "name": "Fell",
+      "author": "Levitan",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 10,
+      "maxstep": 100,
+      "file": "Fell",
+      "selling": true
+    },
+    {
+      "name": "Wheatfield with a reaper",
+      "author": "Van gog",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 5,
+      "maxstep": 50,
+      "file": "Wheatfield_with_a_reaper",
+      "selling": true
+    },
+    {
+      "name": "Не ждали",
+      "author": "Иван Репин",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 5,
+      "maxstep": 50,
+      "file": "Unexpected_visitors",
+      "selling": true
+    },
+    {
+      "name": "Видение пророку Варфоломею",
+      "author": "Иван Репин",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 5,
+      "maxstep": 50,
+      "file": "varfolomei",
+      "selling": true
+    },
+    {
+      "name": "Сиктинская мадонна",
+      "author": "Иван Репин",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 5,
+      "maxstep": 50,
+      "file": "Sictinsraia_madona",
+      "selling": true
+    },
+    {
+      "name": "Постоянство памяти",
+      "author": "Дали",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 5,
+      "maxstep": 50,
+      "file": "Postoinstvo_pamiati",
+      "selling": true
+    },{
+      "name": "Черный квадрат",
+      "author": "Дали",
+      "descript": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam purus sem, vehicula a eleifend sed, ultrices ut nunc. Etiam at urna orci. Fusce dignissim efficitur lacus, eu efficitur tortor dictum vitae. Duis et nisi ac nunc rhoncus ornare. Cras laoreet turpis non velit dictum, quis dapibus diam gravida. Proin dictum mollis ultricies. Sed blandit molestie ligula, at imperdiet neque aliquam at. Sed mauris felis, suscipit at dictum ac, mollis vitae enim. Nullam mauris lectus, venenatis eu massa eget, malesuada pretium libero. Nullam ac ante eu nulla tincidunt ornare. Suspendisse ut feugiat urna, at vehicula felis.",
+      "minstep": 5,
+      "maxstep": 50,
+      "file": "chernii_kvadrat",
+      "selling": true
+    }
+  ]
+}

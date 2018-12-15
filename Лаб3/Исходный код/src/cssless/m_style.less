@@ -1,0 +1,91 @@
+.rounded_top(@radius) {
+  -webkit-border-top-left-radius: @radius;
+  -webkit-border-top-right-radius: @radius;
+  -moz-border-radius-topleft: @radius;
+  -moz-border-radius-topright: @radius;
+  border-top-left-radius: @radius;
+  border-top-right-radius: @radius;
+  border-bottom-right-radius: @radius;
+  border-bottom-left-radius: @radius;
+}
+
+@header-font: yellowgreen;
+@body-font: moccasin;
+@column-font: goldenrod;
+@ol-font: #cce5ff;
+@li-font: gold;
+
+.header {
+  background-color: @header-font;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+  .rounded_top(30px);
+}
+
+.m-border(@colour,@dif) {
+  border: 1px solid darken(@colour, 20%);
+  background-color: lighten(@colour, @dif);
+}
+
+.column {
+  float: left;
+  padding: 10px;
+  width: 100%;
+  .rounded_top(5px);
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+.column.left {
+
+  .m-border(@column-font, 0%);
+  width: 25%;
+
+}
+
+.column.center {
+
+  position: relative;
+  .m-border(@column-font, 20%);
+
+  width: 65%;
+
+}
+
+ol {
+  background: @ol-font;
+  margin: 5px;
+  padding: 5px;
+  .m-border(@ol-font, 0%);
+  .rounded_top(5px);
+}
+
+ol li {
+  background: #ffffff;
+  margin: 20px;
+  background-color: @li-font;
+  .m-border(@li-font, 0%);
+  .rounded_top(5px);
+  padding: 10px;
+
+}
+
+//image{
+//  float: right ;
+//}
+a {
+  border-bottom: 1px dashed #666;
+  text-decoration: none;
+}
+
+body {
+  min-height: 200px;
+  //min-width: 500px;
+  //position: relative;
+  //background-color: @body-font;
+  //background: ;
+  background-image: url(../images/content-box-bg.png);
+  padding: 10px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
