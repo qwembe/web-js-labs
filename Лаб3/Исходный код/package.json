@@ -22,7 +22,7 @@
     "gulp-sourcemaps": "latest",
     "gulp-uglify": "^3.0.1",
     "gulp4": "^4.0.2",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "morgan": "~1.9.0",
     "body-parser": "latest"
   },
