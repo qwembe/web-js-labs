@@ -22,7 +22,7 @@
     "flow-remove-types": "^1.2.3",
     "flow-webpack-plugin": "^1.2.0",
     "http-errors": "~1.6.2",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "mocha": "^5.2.0",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
